@@ -12,13 +12,15 @@ namespace ParkingSystem.Repository
             get => _slot;
             set
             {
-                _slot = value;
                 Vehicle?[] newVehicles = new Vehicle[value];
 
-                for (int i = 0; i < value; i++)
+                int smallestLot = Slot < value ? Slot : value;
+                for (int i = 0; i < smallestLot; i++)
                 {
                     newVehicles[i] = this.vehicles[i];
                 }
+
+                _slot = value;
                 vehicles = newVehicles;
             }
         }
