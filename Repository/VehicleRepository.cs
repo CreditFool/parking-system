@@ -5,7 +5,7 @@ namespace ParkingSystem.Repository
     class VehicleRepository(int slot = 0)
     {
         private Vehicle?[] vehicles = new Vehicle[slot];
-        private int _slot;
+        private int _slot = slot;
 
         public int Slot
         {
