@@ -52,7 +52,7 @@ namespace ParkingSystem.Service
                 return "no available slot left";
             }
 
-            return "Allocated slot number: " + slotUsed;
+            return "Allocated slot number: " + (slotUsed + 1);
         }
     }
 }

@@ -55,11 +55,11 @@ namespace ParkingSystem.App
                 Vehicle? vehicle = vehicles[i];
                 if (vehicle != null)
                 {
-                    Console.WriteLine(i + " " + vehicle.PlateNumber + " " + vehicle.VehicleType + " " + vehicle.Color);
+                    Console.WriteLine((i + 1) + " " + vehicle.PlateNumber + " " + vehicle.VehicleType + " " + vehicle.Color);
                 }
                 else
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine((i + 1));
                 }
             }
         }
