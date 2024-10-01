@@ -59,7 +59,7 @@ namespace ParkingSystem.App
                     break;
 
                 case "slot_number_for_registration_number":
-                    Console.WriteLine();
+                    Console.WriteLine(service.PrintVehiclesSlotWithPlate(commands));
                     break;
 
                 case "status":
@@ -78,12 +78,13 @@ namespace ParkingSystem.App
 
         private static void PrintVehicles(Vehicle?[] vehicles)
         {
+            Console.WriteLine("Slot\t No.\t\t Type\t Registration No Colour");
             for (int i = 0; i < vehicles.Length; i++)
             {
                 Vehicle? vehicle = vehicles[i];
                 if (vehicle != null)
                 {
-                    Console.WriteLine((i + 1) + " " + vehicle.PlateNumber + " " + vehicle.VehicleType + " " + vehicle.Color);
+                    Console.WriteLine((i + 1) + "\t " + vehicle.PlateNumber + "\t " + vehicle.VehicleType + "\t " + vehicle.Color);
                 }
                 else
                 {

@@ -122,6 +122,22 @@ namespace ParkingSystem.Repository
             return [.. result];
         }
 
+        public int VehicleSlotWithPlate(string plate)
+        {
+            plate = plate.ToUpper();
+            int result = -1;
+            for (int i = 0; i < Slot; i++)
+            {
+                Vehicle? vehicle = vehicles[i];
+                if (vehicle != null && vehicle.PlateNumber != null && vehicle.PlateNumber.Equals(plate))
+                {
+                    result = i;
+                    break;
+                }
+            }
+            return result;
+        }
+
         private static int GetNumber(string plate)
         {
             String[] plateComponent = plate.Split("-");

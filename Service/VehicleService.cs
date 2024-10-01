@@ -125,6 +125,21 @@ namespace ParkingSystem.Service
             return ArrayToString(result);
         }
 
+        public string PrintVehiclesSlotWithPlate(string[] commands)
+        {
+            if (commands.Length < 2)
+            {
+                return "bad command; need vehicle plate number";
+            }
+
+            int result = repository.VehicleSlotWithPlate(commands[1]);
+            if (result < 0)
+            {
+                return "Not found";
+            }
+            return Convert.ToString(result + 1);
+        }
+
         private static string ArrayToString(string[] stringList)
         {
             StringBuilder plateList = new();
