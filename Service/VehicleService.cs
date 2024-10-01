@@ -114,6 +114,17 @@ namespace ParkingSystem.Service
             return ArrayToString(result);
         }
 
+        public string PrintVehiclesSlotWithColor(string[] commands)
+        {
+            if (commands.Length < 2)
+            {
+                return "bad command; need vehicle color";
+            }
+
+            string[] result = repository.VehicleSlotWithColor(commands[1]);
+            return ArrayToString(result);
+        }
+
         private static string ArrayToString(string[] stringList)
         {
             StringBuilder plateList = new();

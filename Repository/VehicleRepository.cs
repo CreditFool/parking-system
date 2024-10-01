@@ -107,6 +107,21 @@ namespace ParkingSystem.Repository
             return [.. result];
         }
 
+        public string[] VehicleSlotWithColor(string color)
+        {
+            color = ToCapitalUtil.ToCapital(color);
+            List<string> result = [];
+            for (int i = 0; i < Slot; i++)
+            {
+                Vehicle? vehicle = vehicles[i];
+                if (vehicle != null && vehicle.Color != null && vehicle.Color.Equals(color))
+                {
+                    result.Add(Convert.ToString(i + 1));
+                }
+            }
+            return [.. result];
+        }
+
         private static int GetNumber(string plate)
         {
             String[] plateComponent = plate.Split("-");

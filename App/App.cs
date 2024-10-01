@@ -54,6 +54,14 @@ namespace ParkingSystem.App
                     Console.WriteLine(service.PrintVehiclesWithColor(commands));
                     break;
 
+                case "slot_numbers_for_vehicles_with_colour":
+                    Console.WriteLine(service.PrintVehiclesSlotWithColor(commands));
+                    break;
+
+                case "slot_number_for_registration_number":
+                    Console.WriteLine();
+                    break;
+
                 case "status":
                     PrintVehicles(service.Status());
                     break;
