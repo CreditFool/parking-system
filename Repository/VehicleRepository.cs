@@ -52,5 +52,19 @@ namespace ParkingSystem.Repository
         {
             return this.vehicles;
         }
+
+        public int CountVehicleByType(String vehicleType)
+        {
+            vehicleType = ToCapitalUtil.ToCapital(vehicleType);
+            int result = 0;
+            foreach (Vehicle? vehicle in vehicles)
+            {
+                if (vehicle != null && vehicle.VehicleType != null && vehicle.VehicleType.Equals(vehicleType))
+                {
+                    result += 1;
+                }
+            }
+            return result;
+        }
     }
 }

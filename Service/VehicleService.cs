@@ -49,7 +49,7 @@ namespace ParkingSystem.Service
 
             if (slotUsed < 0)
             {
-                return "no available slot left";
+                return "Sorry, parking lot is full";
             }
 
             return "Allocated slot number: " + (slotUsed + 1);
@@ -79,6 +79,15 @@ namespace ParkingSystem.Service
                 return "Slot number " + n + " is free";
             }
             return "Slot " + n + " didn't have vehicle";
+        }
+
+        public string CountByType(string[] commands)
+        {
+            if (commands.Length < 2)
+            {
+                return "bad command; need vehicle type";
+            }
+            return Convert.ToString(repository.CountVehicleByType(commands[1]));
         }
     }
 }
