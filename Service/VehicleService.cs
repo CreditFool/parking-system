@@ -7,25 +7,45 @@ namespace ParkingSystem.Service
     {
         private readonly VehicleRepository repository = new();
 
-        public string ParkVehicle(string request)
+        public Vehicle?[] Status()
         {
-            String[] command = request.Split();
-            if (command.Length < 4)
+            return repository.GetAllVehicles();
+        }
+
+        public string CreateSlot(string[] commands)
+        {
+            if (commands.Length < 2)
             {
-                return "bad command; need plate number, color, and vehicle type.";
+                return "bad command; need number of slot";
             }
 
-            if (!PlateValidateUtil.Validate(command[1]))
+            int n = Convert.ToInt32(commands[1]);
+            if (n < 0)
+            {
+                return "slot must be equal or greated than 0";
+            }
+            repository.Slot = n;
+            return "Created a parking lot with " + n + " slots";
+        }
+
+        public string ParkVehicle(String[] commands)
+        {
+            if (commands.Length < 4)
+            {
+                return "bad command; need plate number, color, and vehicle type";
+            }
+
+            if (!PlateValidateUtil.Validate(commands[1]))
             {
                 return "false vehicle plate number format; example format A-1234-B";
             }
 
-            if (!command[3].Equals("mobil", StringComparison.CurrentCultureIgnoreCase) || !command[3].Equals("motor", StringComparison.CurrentCultureIgnoreCase))
+            if (!commands[3].Equals("mobil", StringComparison.CurrentCultureIgnoreCase) && !commands[3].Equals("motor", StringComparison.CurrentCultureIgnoreCase))
             {
                 return "only can park Mobil and Motor";
             }
 
-            int slotUsed = repository.InsertVehicle(new Vehicle(command[3], command[1], command[2]));
+            int slotUsed = repository.InsertVehicle(new Vehicle(commands[3], commands[1], commands[2]));
 
             if (slotUsed < 0)
             {
