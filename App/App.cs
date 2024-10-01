@@ -9,10 +9,11 @@ namespace ParkingSystem.App
 
         public void Start()
         {
+
+            PrintCommands();
             string? command;
             do
             {
-                PrintCommands();
                 Console.Write("$ ");
                 command = Console.ReadLine();
                 command ??= "";
