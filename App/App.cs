@@ -34,6 +34,10 @@ namespace ParkingSystem.App
                     Console.WriteLine(service.ParkVehicle(commands));
                     break;
 
+                case "leave":
+                    Console.WriteLine(service.LeaveVehicle(commands));
+                    break;
+
                 case "status":
                     PrintVehicles(service.Status());
                     break;

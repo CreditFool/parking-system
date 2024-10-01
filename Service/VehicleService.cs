@@ -54,5 +54,31 @@ namespace ParkingSystem.Service
 
             return "Allocated slot number: " + (slotUsed + 1);
         }
+
+        public string LeaveVehicle(String[] commands)
+        {
+            if (commands.Length < 2)
+            {
+                return "bad command; need number of slot";
+            }
+
+            int n = Convert.ToInt32(commands[1]);
+            if (n - 1 < 0)
+            {
+                return "selected lot must greater than 0";
+            }
+
+            if (n - 1 >= repository.Slot)
+            {
+                return "selected lot greater than available slot";
+            }
+
+            bool isFree = repository.RemoveVehicle(n - 1);
+            if (isFree)
+            {
+                return "Slot number " + n + " is free";
+            }
+            return "Slot " + n + " didn't have vehicle";
+        }
     }
 }
