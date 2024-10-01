@@ -1,5 +1,6 @@
 using ParkingSystem.Repository;
 using ParkingSystem.Entity;
+using System.Text;
 
 namespace ParkingSystem.Service
 {
@@ -88,6 +89,44 @@ namespace ParkingSystem.Service
                 return "bad command; need vehicle type";
             }
             return Convert.ToString(repository.CountVehicleByType(commands[1]));
+        }
+
+        public string PrintVehiclesWithOddPlate()
+        {
+            string[] result = repository.VehicleWithOddPlate();
+            return ArrayToString(result);
+        }
+
+        public string PrintVehiclesWithEvenPlate()
+        {
+            string[] result = repository.VehicleWithEvenPlate();
+            return ArrayToString(result);
+        }
+
+        public string PrintVehiclesWithColor(string[] commands)
+        {
+            if (commands.Length < 2)
+            {
+                return "bad command; need vehicle color";
+            }
+
+            string[] result = repository.VehicleWithColor(commands[1]);
+            return ArrayToString(result);
+        }
+
+        private static string ArrayToString(string[] stringList)
+        {
+            StringBuilder plateList = new();
+
+            for (int i = 0; i < stringList.Length; i++)
+            {
+                plateList.Append(stringList[i]);
+                if (i != stringList.Length - 1)
+                {
+                    plateList.Append(", ");
+                }
+            }
+            return plateList.ToString();
         }
     }
 }

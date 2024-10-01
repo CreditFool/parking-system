@@ -5,7 +5,7 @@ namespace ParkingSystem.App
 {
     class App
     {
-        private VehicleService service = new();
+        private readonly VehicleService service = new();
 
         public void Start()
         {
@@ -40,6 +40,18 @@ namespace ParkingSystem.App
 
                 case "type_of_vehicles":
                     Console.WriteLine(service.CountByType(commands));
+                    break;
+
+                case "registration_numbers_for_vehicles_with_odd_plate":
+                    Console.WriteLine(service.PrintVehiclesWithOddPlate());
+                    break;
+
+                case "registration_numbers_for_vehicles_with_even_plate":
+                    Console.WriteLine(service.PrintVehiclesWithEvenPlate());
+                    break;
+
+                case "registration_numbers_for_vehicles_with_colour":
+                    Console.WriteLine(service.PrintVehiclesWithColor(commands));
                     break;
 
                 case "status":

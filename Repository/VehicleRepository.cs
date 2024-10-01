@@ -66,5 +66,51 @@ namespace ParkingSystem.Repository
             }
             return result;
         }
+
+        public string[] VehicleWithOddPlate()
+        {
+            List<string> result = [];
+            foreach (Vehicle? vehicle in vehicles)
+            {
+                if (vehicle != null && vehicle.PlateNumber != null && (GetNumber(vehicle.PlateNumber) % 2 == 1))
+                {
+                    result.Add(vehicle.PlateNumber);
+                }
+            }
+            return [.. result];
+        }
+
+        public string[] VehicleWithEvenPlate()
+        {
+            List<string> result = [];
+            foreach (Vehicle? vehicle in vehicles)
+            {
+                if (vehicle != null && vehicle.PlateNumber != null && (GetNumber(vehicle.PlateNumber) % 2 == 0))
+                {
+                    result.Add(vehicle.PlateNumber);
+                }
+            }
+            return [.. result];
+        }
+
+        public string[] VehicleWithColor(string color)
+        {
+            color = ToCapitalUtil.ToCapital(color);
+            List<string> result = [];
+            foreach (Vehicle? vehicle in vehicles)
+            {
+                if (vehicle != null && vehicle.Color != null && vehicle.Color.Equals(color) && vehicle.PlateNumber != null)
+                {
+                    result.Add(vehicle.PlateNumber);
+                }
+            }
+            return [.. result];
+        }
+
+        private static int GetNumber(string plate)
+        {
+            String[] plateComponent = plate.Split("-");
+            return Convert.ToInt32(plateComponent[1]);
+        }
     }
 }
