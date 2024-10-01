@@ -12,6 +12,7 @@ namespace ParkingSystem.App
             string? command;
             do
             {
+                PrintCommands();
                 Console.Write("$ ");
                 command = Console.ReadLine();
                 command ??= "";
@@ -91,6 +92,24 @@ namespace ParkingSystem.App
                     Console.WriteLine((i + 1));
                 }
             }
+        }
+
+        private static void PrintCommands()
+        {
+            Console.WriteLine("Available Commands: ");
+            Console.WriteLine("");
+            Console.WriteLine("create_parking_lot <number>");
+            Console.WriteLine("park <plate> <color> <type>");
+            Console.WriteLine("leave <slot>");
+            Console.WriteLine("status");
+            Console.WriteLine("type_of_vehicles <type>");
+            Console.WriteLine("registration_numbers_for_vehicles_with_odd_plate");
+            Console.WriteLine("registration_numbers_for_vehicles_with_even_plate");
+            Console.WriteLine("registration_numbers_for_vehicles_with_colour <color>");
+            Console.WriteLine("slot_numbers_for_vehicles_with_colour <color>");
+            Console.WriteLine("slot_number_for_registration_number <plate>");
+            Console.WriteLine("exit");
+            Console.WriteLine();
         }
     }
 };
